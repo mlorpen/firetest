@@ -5,6 +5,10 @@
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
-    ]
+    ],
+    "github": {
+      "repo": "mlorpen/firetest",
+      "branch": "main"
+    }
   }
 }
