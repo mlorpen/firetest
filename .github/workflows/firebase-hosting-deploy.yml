@@ -21,10 +21,9 @@ jobs:
       - name: Install Firebase CLI
         run: npm install -g firebase-tools
 
-      - name: Authenticate with Firebase
-        run: firebase login:ci --interactive; y
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_FIRETEST_88295 }}
-
       - name: Deploy to Firebase Hosting
-        run: firebase deploy --only hosting
+        env: 
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+        run: echo "${GOOGLE_APPLICATION_CREDENTIALS}" > "$HOME"/service-account.json
+          export GOOGLE_APPLICATION_CREDENTIALS="$HOME/service-account.json"
+          firebase deploy --only hosting
