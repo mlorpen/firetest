@@ -24,6 +24,8 @@ jobs:
       - name: Deploy to Firebase Hosting
         env: 
           GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
-        run: 
+        run: echo "${GOOGLE_APPLICATION_CREDENTIALS}" > "$HOME"/service-account.json
+          export GOOGLE_APPLICATION_CREDENTIALS="$HOME/service-account.json"
           firebase deploy --only hosting
 
+          
